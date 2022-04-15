@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import BookComponent from './bookComponent.jsx'
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
@@ -9,25 +9,18 @@ class App extends React.Component {
     super(props)
     this.state = {
       bookSearchQuery: '',
-      bookVersionObj: {},
-      isLoading: false
+      bookVersionObj: [],
+      isbn: "039548930X",
+      isLoading: false,
+      isbnResponse: {},
     }
 
     // this.sendSearchQuery = this.sendSearchQuery.bind(this);
   }
 
-  // componentDidMount() {
-
-  // }
-
-  // componentWillUnmount() {
-  //   this.setState({bookSearchQuery: ''})
-  // }
-
   updateSearchQuery = (event) => {
     let searchInput = event.target.value
     let searchQuery = searchInput.replace(/\s/g, "+")
-    console.log(searchQuery)
 
     this.setState({bookSearchQuery: searchQuery})
   }
@@ -35,18 +28,24 @@ class App extends React.Component {
   sendSearchQuery = (event) => {
     event.preventDefault()
     this.setState({bookVersionObj: {}})
-    // console.log(this.state.bookSearchQuery)
-    this.setState({isLoading: true})
 
     fetch(`http://openlibrary.org/search.json?q=${this.state.bookSearchQuery}`)
     .then(response => response.json())
-    .then(response => this.setState({bookVersionObj: response}))
-    .then(this.setState({isLoading: false}))
+    .then(response => this.setState({bookVersionObj: response.docs}))
     .catch(error => console.log(error))
+
+    // fetch(`http://openlibrary.org/api/volumes/brief/isbn/039548930X.json`, {
+    //
+    // })
+    // .then(response => response)
+    // .then(response => this.setState({isbnResponse: response}))
+    // .catch(error => console.log(error))
   }
+  
 
   checkBookObj = () => {
     console.log(this.state.bookVersionObj)
+    console.log(this.state.isbnResponse)
   }
 
 
@@ -54,14 +53,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <form onSubmit={this.sendSearchQuery}>
             <input type="text" onChange={this.updateSearchQuery}/>
             <button>Submit</button>
           </form>
           <h4 onClick={this.checkBookObj}>check</h4>
           <div>{this.state.isLoading ? "loading..." : "not loading yet"}</div>
-          <div></div>
+          {this.state.bookVersionObj.length > 0 ? this.state.bookVersionObj.map((book, i) => 
+            <BookComponent book={book} key={i}/>
+          ) : ""}
+
+          {/*<div class="ol_readapi_book" isbn="039471752X" lccn="75009828"></div>*/}
         </header>
       </div>
     );
