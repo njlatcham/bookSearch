@@ -91,12 +91,12 @@ class App extends React.Component {
     event.preventDefault()
     this.setState({searchResponse: []})
 
-    fetch(`http://openlibrary.org/search.json?q=${this.state.bookSearchQuery}`)
+    fetch(`https://openlibrary.org/search.json?q=${this.state.bookSearchQuery}`)
     .then(response => response.json())
     .then(response => this.setState({searchResponse: response.docs}))
     .catch(error => console.log(error))
 
-    fetch(`http://openlibrary.org/api/volumes/brief/isbn/1408883783.json`)
+    fetch(`https://openlibrary.org/api/volumes/brief/isbn/1408883783.json`)
     .then(response => response)
     .then(response => this.setState({isbnResponse: response}))
     .catch(error => console.log(error))
