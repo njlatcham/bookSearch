@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
 import BookComponent from './bookComponent.jsx'
 
 import './App.css';
@@ -96,10 +96,7 @@ class App extends React.Component {
     .then(response => this.setState({searchResponse: response.docs}))
     .catch(error => console.log(error))
 
-    fetch(`http://openlibrary.org/api/volumes/brief/isbn/1408883783.json`, {
-    method: "GET",
-
-    })
+    fetch(`http://openlibrary.org/api/volumes/brief/isbn/1408883783.json`)
     .then(response => response)
     .then(response => this.setState({isbnResponse: response}))
     .catch(error => console.log(error))

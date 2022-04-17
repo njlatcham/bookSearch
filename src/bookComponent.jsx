@@ -1,9 +1,9 @@
 import React from 'react';
 
 class BookComponent extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+	// constructor(props) {
+	// 	super(props)
+	// }
 
 	componentDidMount = () => {
 		console.log(this.props.book)
