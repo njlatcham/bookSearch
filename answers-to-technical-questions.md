@@ -38,13 +38,25 @@
 4. My first piece of advice to improve this API would be to make it easier to access data from the read API, which I had the most issues with as it would not accept any request I made from the browser. This required me to circumvent this by using my own server to make the get requests and pass the information back to my app. Maybe that is the way it was intended, it just makes testing with the API incredibly difficult to know where to begin. I would also have someone do a more in depth review of the dev docs on this API and share more information with the developers.
 
 5.
-`let nikolasLatcham = {
-	birth_date: ["January 9, 1998", 09/01/1998],
-	family: {
-		mother: "Michelle Vanderzon",
-		father: "Michael Latcham",
-		brother: "Magnus Latcham"
-	},
-	hobbies: ["Football/Soccer", "Lego", "Violin"],
-	favourite_movies: ["The Lord of the Rings: The Fellowship of the Ring", "The Royal Tenenbaums", "In Bruges"]
+`{
+   "name":"Nikolas Jack Latcham",
+   "birth_date":[
+      "January 9, 1998",
+      "09/01/1998"
+   ],
+   "family":{
+      "mother":"Michelle Vanderzon",
+      "father":"Michael Latcham",
+      "brother":"Magnus Latcham"
+   },
+   "hobbies":[
+      "Football/Soccer",
+      "Lego",
+      "Violin"
+   ],
+   "favourite_movies":[
+      "The Lord of the Rings: The Fellowship of the Ring",
+      "The Royal Tenenbaums",
+      "In Bruges"
+   ]
 }`
