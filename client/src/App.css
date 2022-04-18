@@ -18,6 +18,7 @@
 .book_search-input {
   font-size: 24px;
   width: 60%;
+  border: none;
 }
 
 .book_search-submit {
@@ -25,16 +26,29 @@
   background-color: #fff;
   border: none;
   width: 30%;
+  border-radius: 1px;
+  cursor: pointer;
 }
 
 .book_search-sorting {
   width:  50%;
   display: flex;
   justify-content: space-between;
+  margin: 15px 0 0 0;
 }
 
-.book_search-sorting h4 {
+.book_search-sorting button {
   cursor: pointer;
+  font-size: 20px;
+  border: none;
+  border-radius: 1px;
+  background-color: #fff;
+}
+
+.book_search-sorting button:hover {
+  background-color: #282c34;
+  color: #fff;
+  transition-duration: 0.2s;
 }
 
 .book_search-response {
@@ -74,11 +88,47 @@
   text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 900px) {
+  .book_wrapper {
+    width:  45%;
+    margin: 15px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 400px) {
+  .book_search-header {
+    padding: 0 10px;
+  }
+
+  .book_search-form_fields {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book_search-input {
+    font-size: 24px;
+    width: 100%;
+    border: none;
+    margin: 0 0 10px 0;
+  }
+
+  .book_search-submit {
+    font-size:  24px;
+    background-color: #fff;
+    border: none;
+    width: 50%;
+    border-radius: 1px;
+    cursor: pointer;
+  }
+
+  .book_search-sorting {
+    margin: 45px 0 0 0;
+    width:  100%;
+  }
+
+  .book_wrapper {
+    width: 100%;
+    margin: 15px;
   }
 }

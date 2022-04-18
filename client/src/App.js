@@ -31,7 +31,6 @@ class App extends React.Component {
     fetch(`https://openlibrary.org/search.json?q=${this.state.bookSearchQuery}`)
     .then(response => response.json())
     .then(response => {
-      console.log(response.docs)
       isbnArray = this.getIsbnNumbers(response.docs)
     })
     .then(response => {
@@ -39,7 +38,9 @@ class App extends React.Component {
         fetch(`http://localhost:3001?isbn=${isbn.isbn}`)
         .then(response => response.json())
         .then(response => {
-          this.setState({isbnResponse: [...this.state.isbnResponse, response.records[isbn.seed].data]})
+          let responseRename = response.records
+          let newRenameResp = response.records[Object.keys(responseRename)[0]]
+          this.setState({isbnResponse: [...this.state.isbnResponse, newRenameResp.data]})
         })
         .catch(error => console.log(error))
       })
@@ -48,7 +49,6 @@ class App extends React.Component {
   }
 
   getIsbnNumbers = (bookArray) => {
-    // console.log(bookArray)
     const isbnArray = []
 
     bookArray.forEach((book) => {
@@ -63,15 +63,7 @@ class App extends React.Component {
       }
     })
 
-    let maximumArray = isbnArray.slice(0, 49)
-    return maximumArray
-  }
-
-
-  
-  checkBookObj = () => {
-    console.log(this.state.searchResponse)
-    console.log(this.state.isbnResponse)
+    return isbnArray
   }
 
   sortByTitle = () => {
@@ -95,19 +87,19 @@ class App extends React.Component {
         <header className="book_search-header">
           <h1>Book Search Tool</h1>
           <form className="book_search-form_fields" onSubmit={this.sendSearchQuery}>
-            <input className="book_search-input" placeholder="Search by Book Title/Author" type="text" onChange={this.updateSearchQuery}/>
+            <input className="book_search-input" placeholder="Search by Book Title" type="text" onChange={this.updateSearchQuery}/>
             <button className="book_search-submit">Submit</button>
           </form>
           <div className="book_search-sorting">
-            <h4 onClick={this.sortByTitle}>Sort by A-Z</h4>
-            <h4 onClick={this.sortByPublishDate}>Sort by Date</h4>
+            <button onClick={this.sortByTitle}>Sort by A-Z</button>
+            <button onClick={this.sortByPublishDate}>Sort by Date</button>
           </div>
         </header>
 
         <div className="book_search-response">
           {this.state.isbnResponse.length > 0 ? this.state.isbnResponse.map((book, i) => 
             <BookComponent book={book} key={i}/>
-          ) : ""}
+          ) : <div>Results will populate here...</div>}
           </div>
       </div>
     );
