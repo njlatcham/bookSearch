@@ -95,7 +95,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .book_search-header {
     padding: 0 10px;
   }
