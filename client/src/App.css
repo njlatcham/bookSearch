@@ -1,0 +1,84 @@
+.book_search-header {
+  background-color: #282c34;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.book_search-form_fields {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book_search-input {
+  font-size: 24px;
+  width: 60%;
+}
+
+.book_search-submit {
+  font-size:  24px;
+  background-color: #fff;
+  border: none;
+  width: 30%;
+}
+
+.book_search-sorting {
+  width:  50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book_search-sorting h4 {
+  cursor: pointer;
+}
+
+.book_search-response {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items:  flex-end;
+}
+
+.book_wrapper {
+  width:  29%;
+  margin: 15px;
+}
+
+.book_container {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border-radius: 15px;
+  padding: 20px 15px;
+}
+
+.book_cover {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.book_title {
+  text-align: center;
+}
+
+.book_author {
+  text-align: center;
+}
+
+.book_publish-date {
+  text-align: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
