@@ -35,7 +35,7 @@ class App extends React.Component {
     })
     .then(response => {
       isbnArray.forEach((isbn) => {
-        fetch(`http://localhost:3001?isbn=${isbn.isbn}`)
+        fetch(`https://interview-book-search.herokuapp.com/?isbn=${isbn.isbn}`)
         .then(response => response.json())
         .then(response => {
           let responseRename = response.records
